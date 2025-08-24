@@ -71,15 +71,18 @@ export default function Header() {
     // TODO: Implement user menu actions
   };
 
-  const handleToWishList = () => {
+  const handleToWishList = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     navigate(PATH.WISH_LIST);
   };
 
-  const handleToCart = () => {
+  const handleToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     navigate(PATH.CART);
   };
 
-  const handleGoHome = () => {
+  const handleGoHome = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     navigate(PATH.HOME);
   };
 
