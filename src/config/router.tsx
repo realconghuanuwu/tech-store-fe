@@ -54,16 +54,6 @@ export const router = createBrowserRouter([
         path: PATH.PRODUCT.DETAIL,
         element: <LazyLoading Component={ProductDetailPage} />,
       },
-    ],
-  },
-  {
-    path: "/",
-    Component: PrivateRoute,
-    children: [
-      {
-        path: PATH.USER_PROFILE,
-        element: <LazyLoading Component={UserProfilePage} />,
-      },
       {
         path: PATH.WISH_LIST,
         element: <LazyLoading Component={WishListPage} />,
@@ -72,8 +62,19 @@ export const router = createBrowserRouter([
         path: PATH.CART,
         element: <LazyLoading Component={CartPage} />,
       },
+      {
+        path: PATH.USER_PROFILE,
+        element: <LazyLoading Component={UserProfilePage} />,
+      },
     ],
   },
+  // {
+  //   path: "/",
+  //   Component: PrivateRoute,
+  //   children: [
+
+  //   ],
+  // },
   {
     path: "*",
     element: <NotFound />,
