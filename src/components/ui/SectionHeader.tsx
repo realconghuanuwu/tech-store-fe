@@ -17,8 +17,8 @@ export default function SectionHeader({
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-10 bg-red-500 rounded"></div>
-            <span className="text-red-500 font-semibold">{title}</span>
+            <div className="w-5 h-10 bg-c-main-red rounded"></div>
+            <span className="text-c-main-red font-semibold">{title}</span>
           </div>
         </div>
       </div>

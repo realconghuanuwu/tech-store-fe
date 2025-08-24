@@ -124,7 +124,7 @@ export default function CheckoutPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                First Name <span className="text-red-500">*</span>
+                First Name <span className="text-c-main-red">*</span>
               </label>
               <Input
                 value={billingForm.firstName}
@@ -152,7 +152,7 @@ export default function CheckoutPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Street Address <span className="text-red-500">*</span>
+                Street Address <span className="text-c-main-red">*</span>
               </label>
               <Input
                 value={billingForm.streetAddress}
@@ -180,7 +180,7 @@ export default function CheckoutPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Town/City <span className="text-red-500">*</span>
+                Town/City <span className="text-c-main-red">*</span>
               </label>
               <Input
                 value={billingForm.townCity}
@@ -194,7 +194,7 @@ export default function CheckoutPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Phone Number <span className="text-red-500">*</span>
+                Phone Number <span className="text-c-main-red">*</span>
               </label>
               <Input
                 value={billingForm.phoneNumber}
@@ -208,7 +208,7 @@ export default function CheckoutPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address <span className="text-red-500">*</span>
+                Email Address <span className="text-c-main-red">*</span>
               </label>
               <Input
                 value={billingForm.emailAddress}
@@ -304,7 +304,7 @@ export default function CheckoutPage() {
                   <div className="w-8 h-5 bg-blue-600 rounded text-white text-xs flex items-center justify-center font-bold">
                     VISA
                   </div>
-                  <div className="w-8 h-5 bg-red-600 rounded text-white text-xs flex items-center justify-center font-bold">
+                  <div className="w-8 h-5 bg-c-main-red rounded text-white text-xs flex items-center justify-center font-bold">
                     MC
                   </div>
                   <div className="w-8 h-5 bg-orange-500 rounded text-white text-xs flex items-center justify-center font-bold">
@@ -331,7 +331,7 @@ export default function CheckoutPage() {
               size="large"
             />
             <Button
-              className="bg-red-500 hover:bg-red-600 text-white border-red-500 px-6"
+              className="bg-c-main-red hover:bg-c-main-red text-white border-c-main-red px-6"
               size="large"
             >
               Apply Coupon
@@ -340,7 +340,7 @@ export default function CheckoutPage() {
 
           {/* Place Order Button */}
           <Button
-            className="w-full bg-red-500 hover:bg-red-600 text-white border-red-500 py-3 text-base font-medium"
+            className="w-full bg-c-main-red hover:bg-c-main-red text-white border-c-main-red py-3 text-base font-medium"
             size="large"
             onClick={handlePlaceOrder}
           >

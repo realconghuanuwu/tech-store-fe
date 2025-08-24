@@ -31,7 +31,7 @@ export default function NotFound() {
 
             <Link
               to={PATH.HOME}
-              className="inline-block bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded transition-colors duration-200"
+              className="inline-block bg-c-main-red hover:bg-c-main-red text-white px-8 py-3 rounded transition-colors duration-200"
             >
               Back to home page
             </Link>

@@ -1,8 +1,6 @@
-import { PATH } from "@/constants/router.constant";
 import { cn } from "@/utils/function";
 import { Breadcrumb } from "antd";
 import type { BreadcrumbProps } from "antd/lib";
-import { useNavigate } from "react-router";
 
 interface CommonPageProps {
   children: React.ReactNode;
@@ -16,7 +14,7 @@ export default function CommonPage({
   breadcrumbItems,
 }: CommonPageProps) {
   return (
-    <div className={cn("max-w-7xl mx-auto", className)}>
+    <div className={cn("max-w-7xl mx-auto py-8", className)}>
       {breadcrumbItems && (
         <Breadcrumb items={breadcrumbItems} className="mb-8" />
       )}

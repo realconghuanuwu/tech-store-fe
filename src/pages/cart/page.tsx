@@ -42,7 +42,7 @@ export default function MyCartPage() {
   }
 
   return (
-    <CommonPage className="py-8" breadcrumbItems={breadcrumbItems}>
+    <CommonPage breadcrumbItems={breadcrumbItems}>
       {step === 1 && <CartPage onStep={handleStep} />}
       {step === 2 && <CheckoutPage />}
     </CommonPage>

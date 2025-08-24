@@ -11,6 +11,9 @@ const LoginPage = lazy(() => import("@/pages/auth/login/page"));
 const RegisterPage = lazy(() => import("@/pages/auth/register/page"));
 const WishListPage = lazy(() => import("@/pages/wish-list/page"));
 const CartPage = lazy(() => import("@/pages/cart/page"));
+const UserProfilePage = lazy(() => import("@/pages/user-profile/page"));
+const AboutUsPage = lazy(() => import("@/pages/about-us/page"));
+const ContactPage = lazy(() => import("@/pages/contact/page"));
 
 export const router = createBrowserRouter([
   // Public routes - accessible to everyone without authentication
@@ -40,11 +43,11 @@ export const router = createBrowserRouter([
       },
       {
         path: PATH.ABOUT,
-        element: <div>About Page</div>,
+        element: <LazyLoading Component={AboutUsPage} />,
       },
       {
         path: PATH.CONTACT,
-        element: <div>Contact Page</div>,
+        element: <LazyLoading Component={ContactPage} />,
       },
     ],
   },
@@ -54,7 +57,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: PATH.USER_PROFILE,
-        element: <div>User Profile Page</div>,
+        element: <LazyLoading Component={UserProfilePage} />,
       },
       {
         path: PATH.WISH_LIST,

@@ -102,7 +102,7 @@ export default function CartPage({
                 />
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="absolute -top-2 -left-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+                  className="absolute -top-2 -left-2 bg-c-main-red text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-c-main-red transition-colors"
                 >
                   <X className="h-3 w-3" />
                 </button>
@@ -157,7 +157,7 @@ export default function CartPage({
             size="large"
           />
           <Button
-            className="bg-red-500 hover:bg-red-600 text-white border-red-500 px-6 py-2"
+            className="bg-c-main-red hover:bg-c-main-red text-white border-c-main-red px-6 py-2"
             size="large"
           >
             Apply Coupon
@@ -190,7 +190,7 @@ export default function CartPage({
           </div>
 
           <Button
-            className="w-full mt-6 bg-red-500 hover:bg-red-600 text-white border-red-500 py-3 text-base font-medium"
+            className="w-full mt-6 bg-c-main-red hover:bg-c-main-red text-white border-c-main-red py-3 text-base font-medium"
             size="large"
             onClick={() => onStep(2)}
           >

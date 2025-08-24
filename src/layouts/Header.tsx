@@ -34,6 +34,7 @@ export default function Header() {
       key: "account",
       label: "Manage My Account",
       icon: <User size={16} className="text-gray-600" />,
+      onClick: () => navigate(PATH.USER_PROFILE),
     },
     {
       key: "orders",

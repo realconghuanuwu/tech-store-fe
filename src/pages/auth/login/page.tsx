@@ -45,7 +45,7 @@ export default function LoginForm() {
             </div>
 
             <div className="space-y-4 pt-3">
-              <Button className="w-full h-12 bg-red-500 hover:bg-red-600 text-white font-medium">
+              <Button className="w-full h-12 bg-c-main-red hover:bg-c-main-red text-white font-medium">
                 Log in
               </Button>
             </div>
@@ -54,7 +54,7 @@ export default function LoginForm() {
               <p className="text-center">
                 <Link
                   to={PATH.FORGOT_PASSWORD}
-                  className="text-red-500 hover:text-red-600"
+                  className="text-c-main-red hover:text-c-main-red"
                 >
                   Forget Password?
                 </Link>

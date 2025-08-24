@@ -57,7 +57,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-4 pt-3">
-              <Button className="w-full h-12 bg-red-500 hover:bg-red-600 text-white font-medium">
+              <Button className="w-full h-12 bg-c-main-red hover:bg-c-main-red text-white font-medium">
                 Create Account
               </Button>
 

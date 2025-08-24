@@ -1,6 +1,7 @@
 import { Menu, Image, type MenuProps } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "./HeroSection.css";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
