@@ -8,4 +8,6 @@ export const PATH = {
   USER_PROFILE: "/user-profile",
   CONTACT: "/contact",
   ABOUT: "/about",
+  WISH_LIST: "/wish-list",
+  CART: "/my-cart",
 };

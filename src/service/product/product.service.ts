@@ -10,6 +10,7 @@ export const useGetProducts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
+    staleTime: 1000 * 60 * 5,
   });
   return { data: data as ProductRes[], isLoading, error };
 };

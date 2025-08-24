@@ -1,5 +1,5 @@
 import { PATH } from "@/constants/router.constant";
-import { Button, Input, Dropdown } from "antd";
+import { Button, Input, Dropdown, Badge } from "antd";
 import {
   Search,
   Heart,
@@ -13,8 +13,11 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router";
 import type { MenuProps } from "antd";
+import { useNavigate } from "react-router";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   const languageItems: MenuProps["items"] = [
     {
       key: "en",
@@ -67,8 +70,16 @@ export default function Header() {
     // TODO: Implement user menu actions
   };
 
+  const handleToWishList = () => {
+    navigate(PATH.WISH_LIST);
+  };
+
+  const handleToCart = () => {
+    navigate(PATH.CART);
+  };
+
   return (
-    <header className="w-full">
+    <header className="w-full shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
       {/* Top promotional banner */}
       <div className="bg-black text-white py-3 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -121,11 +132,23 @@ export default function Header() {
             />
 
             {/* Action icons */}
-            <Button type="link" className="hover:bg-gray-100">
-              <Heart size={20} className="text-gray-700" />
+            <Button
+              type="link"
+              className="hover:bg-gray-100"
+              onClick={handleToWishList}
+            >
+              <Badge count={4} size="small">
+                <Heart size={20} className="text-gray-700" />
+              </Badge>
             </Button>
-            <Button type="link" className="hover:bg-gray-100">
-              <ShoppingCart size={20} className="text-gray-700" />
+            <Button
+              type="link"
+              className="hover:bg-gray-100"
+              onClick={handleToCart}
+            >
+              <Badge count={2} size="small">
+                <ShoppingCart size={20} className="text-gray-700" />
+              </Badge>
             </Button>
             <Dropdown
               menu={{

@@ -9,6 +9,8 @@ import NotFound from "@/components/ui/error-handle/NotFound";
 const HomePage = lazy(() => import("@/pages/home/page"));
 const LoginPage = lazy(() => import("@/pages/auth/login/page"));
 const RegisterPage = lazy(() => import("@/pages/auth/register/page"));
+const WishListPage = lazy(() => import("@/pages/wish-list/page"));
+const CartPage = lazy(() => import("@/pages/cart/page"));
 
 export const router = createBrowserRouter([
   // Public routes - accessible to everyone without authentication
@@ -53,6 +55,14 @@ export const router = createBrowserRouter([
       {
         path: PATH.USER_PROFILE,
         element: <div>User Profile Page</div>,
+      },
+      {
+        path: PATH.WISH_LIST,
+        element: <LazyLoading Component={WishListPage} />,
+      },
+      {
+        path: PATH.CART,
+        element: <LazyLoading Component={CartPage} />,
       },
     ],
   },

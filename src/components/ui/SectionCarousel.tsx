@@ -10,6 +10,7 @@ interface SectionCarouselProps<T> {
   title: string;
   products: T[] | any;
   topRender?: ReactNode;
+  right?: ReactNode;
   renderItem: (item: T) => ReactNode;
   bottomRender?: ReactNode;
   loading?: boolean;
@@ -39,6 +40,7 @@ export default function SectionCarousel<T>({
   title,
   products,
   topRender,
+  right,
   renderItem,
   bottomRender,
   loading = false,
@@ -70,7 +72,7 @@ export default function SectionCarousel<T>({
   return (
     <section className="py-16 mx-auto">
       {/* Section Header */}
-      <SectionHeader title={title} />
+      <SectionHeader title={title} right={right} />
 
       {/* Flash Sales Title and Countdown */}
       <div
