@@ -7,17 +7,17 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 const items: MenuItem[] = [
   {
-    key: "2",
+    key: "1",
     label: "Woman's Fashion",
     children: [
-      { key: "1", label: "Option 1" },
-      { key: "2", label: "Option 2" },
-      { key: "3", label: "Option 3" },
-      { key: "4", label: "Option 4" },
+      { key: "1.1", label: "Option 1" },
+      { key: "1.2", label: "Option 2" },
+      { key: "1.3", label: "Option 3" },
+      { key: "1.4", label: "Option 4" },
     ],
   },
   {
-    key: "1",
+    key: "2",
     label: "Electronics",
   },
   {

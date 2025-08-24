@@ -1,5 +1,7 @@
 import { Button, Card, Image } from "antd";
 import { Eye, Heart, Star } from "lucide-react";
+import { PATH } from "@/constants/router.constant";
+import { useNavigate } from "react-router";
 
 export interface ProductCardProps {
   key?: string | number;
@@ -20,6 +22,7 @@ export default function ProductCard({
   product: ProductCardProps;
   hideRating?: boolean;
 }) {
+  const navigate = useNavigate();
   return (
     <Card
       key={product.key}
@@ -42,7 +45,7 @@ export default function ProductCard({
 
         {/* Action Icons */}
         <div className="absolute top-3 right-3 flex flex-col gap-2">
-          <Button size="small" className="!rounded-full !size-8 ">
+          <Button size="small" className="!rounded-full !size-8">
             <Heart className="h-4 w-4" />
           </Button>
           <Button size="small" className="!rounded-full !size-8">
@@ -56,7 +59,14 @@ export default function ProductCard({
         </div>
       </div>
 
-      <div className="p-4">
+      <div
+        className="p-4 hover:cursor-pointer"
+        onClick={() =>
+          navigate(
+            PATH.PRODUCT.DETAIL.replace(":id", product.id?.toString() ?? "")
+          )
+        }
+      >
         <h3 className="font-medium text-gray-900 mb-2">{product.name}</h3>
 
         <div className="flex items-center gap-2 mb-2">

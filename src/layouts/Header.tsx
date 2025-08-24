@@ -11,7 +11,7 @@ import {
   Star,
   LogOut,
 } from "lucide-react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import type { MenuProps } from "antd";
 import { useNavigate } from "react-router";
 
@@ -79,6 +79,10 @@ export default function Header() {
     navigate(PATH.CART);
   };
 
+  const handleGoHome = () => {
+    navigate(PATH.HOME);
+  };
+
   return (
     <header className="w-full shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
       {/* Top promotional banner */}
@@ -111,7 +115,12 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-black">Exclusive</h1>
+            <h1
+              className="text-2xl font-bold text-black cursor-pointer"
+              onClick={handleGoHome}
+            >
+              Exclusive
+            </h1>
           </div>
 
           {/* Navigation */}

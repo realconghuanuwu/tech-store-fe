@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import AboutUsCard from "./components/AboutUsCard";
+import ServiceLabelSection from "../home/components/ServiceLabelSection";
 
 export default function AboutUsPage() {
   const navigate = useNavigate();
@@ -136,6 +137,7 @@ export default function AboutUsPage() {
             </div>
           </div>
         </section>
+        <ServiceLabelSection />
       </main>
     </CommonPage>
   );

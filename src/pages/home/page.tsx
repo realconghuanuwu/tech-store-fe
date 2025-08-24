@@ -6,7 +6,6 @@ import BannerSection from "./components/BannerSection";
 import OurProductSection from "./components/OurProductSection";
 import NewArrivalSection from "./components/NewArrivalSection";
 import ServiceLabelSection from "./components/ServiceLabelSection";
-import GoToTopButton from "@/components/ui/GoToTopButton";
 import CommonPage from "@/components/ui/CommonPage";
 
 export default function HomePage() {
@@ -21,7 +20,6 @@ export default function HomePage() {
         <OurProductSection />
         <NewArrivalSection />
         <ServiceLabelSection />
-        <GoToTopButton />
       </main>
     </CommonPage>
   );

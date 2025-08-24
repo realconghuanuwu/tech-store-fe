@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect } from "react";
+import GoToTopButton from "@/components/ui/GoToTopButton";
 
 function MainLayout() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function MainLayout() {
       <Header />
       <Outlet />
       <Footer />
+      <GoToTopButton />
     </div>
   );
 }

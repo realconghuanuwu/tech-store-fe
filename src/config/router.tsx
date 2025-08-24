@@ -14,6 +14,7 @@ const CartPage = lazy(() => import("@/pages/cart/page"));
 const UserProfilePage = lazy(() => import("@/pages/user-profile/page"));
 const AboutUsPage = lazy(() => import("@/pages/about-us/page"));
 const ContactPage = lazy(() => import("@/pages/contact/page"));
+const ProductDetailPage = lazy(() => import("@/pages/product-detail/page"));
 
 export const router = createBrowserRouter([
   // Public routes - accessible to everyone without authentication
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: PATH.CONTACT,
         element: <LazyLoading Component={ContactPage} />,
+      },
+      {
+        path: PATH.PRODUCT.DETAIL,
+        element: <LazyLoading Component={ProductDetailPage} />,
       },
     ],
   },

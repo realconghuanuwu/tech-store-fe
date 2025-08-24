@@ -10,4 +10,8 @@ export const PATH = {
   ABOUT: "/about",
   WISH_LIST: "/wish-list",
   CART: "/my-cart",
+  PRODUCT: {
+    ROOT: "/products",
+    DETAIL: "/products/:id",
+  },
 };
