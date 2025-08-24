@@ -1,4 +1,4 @@
-import { Spin } from "antd";
+import Loading from "@/components/ui/Loading";
 import { Suspense, type LazyExoticComponent } from "react";
 
 function LazyLoading({
@@ -7,7 +7,7 @@ function LazyLoading({
   Component: LazyExoticComponent<React.ComponentType<unknown>>;
 }) {
   return (
-    <Suspense fallback={<Spin />}>
+    <Suspense fallback={<Loading />}>
       <Component />
     </Suspense>
   );

@@ -1,76 +1,25 @@
-import SectionCarousel from "@/components/ui/SectionCarousel";
 import FlashSection from "./components/FlashSection.";
 import HeroSection from "./components/HeroSection";
-import { Card, Divider, Image } from "antd";
 import CategorySection from "./components/CategorySection";
 import BestSaleSection from "./components/BestSaleSection";
-
-const products: any[] = [
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://via.placeholder.com/150",
-  },
-];
+import BannerSection from "./components/BannerSection";
+import OurProductSection from "./components/OurProductSection";
+import NewArrivalSection from "./components/NewArrivalSection";
+import ServiceLabelSection from "./components/ServiceLabelSection";
+import GoToTopButton from "@/components/ui/GoToTopButton";
 
 export default function HomePage() {
   return (
-    <main className="flex-1">
+    <main>
       <HeroSection />
       <FlashSection />
-      <Divider />
       <CategorySection />
       <BestSaleSection />
+      <BannerSection />
+      <OurProductSection />
+      <NewArrivalSection />
+      <ServiceLabelSection />
+      <GoToTopButton />
     </main>
   );
 }

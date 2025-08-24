@@ -13,7 +13,9 @@ function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <Outlet />
+      <div className="max-w-7xl mx-auto">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

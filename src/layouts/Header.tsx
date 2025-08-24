@@ -1,9 +1,26 @@
 import { PATH } from "@/constants/router.constant";
-import { Avatar, Button, Input } from "antd";
+import { Avatar, Button, Input, Dropdown } from "antd";
 import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
 import { Link, NavLink } from "react-router";
+import type { MenuProps } from "antd";
 
 export default function Header() {
+  const languageItems: MenuProps["items"] = [
+    {
+      key: "en",
+      label: "English",
+    },
+    {
+      key: "vi",
+      label: "Tiếng Việt",
+    },
+  ];
+
+  const handleLanguageChange = ({ key }: { key: string }) => {
+    console.log("Selected language:", key);
+    // TODO: Implement language change logic
+  };
+
   return (
     <header className="w-full">
       {/* Top promotional banner */}
@@ -18,10 +35,16 @@ export default function Header() {
               </span>
             </span>
           </div>
-          <div className="flex items-center gap-1 cursor-pointer">
-            <span className="text-sm">English</span>
-            <ChevronDown className="w-4 h-4" />
-          </div>
+          <Dropdown
+            menu={{ items: languageItems, onClick: handleLanguageChange }}
+            placement="bottomRight"
+            trigger={["click"]}
+          >
+            <div className="flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+              <span className="text-sm">English</span>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+          </Dropdown>
         </div>
       </div>
 
@@ -34,7 +57,7 @@ export default function Header() {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 font-semibold">
             <CNavLink to={PATH.HOME}>Home</CNavLink>
             <CNavLink to={PATH.CONTACT}>Contact</CNavLink>
             <CNavLink to={PATH.ABOUT}>About</CNavLink>
@@ -74,8 +97,8 @@ function CNavLink({ to, children }: { to: string; children: React.ReactNode }) {
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "text-gray-900 hover:text-gray-600 transition-colors border-b-2 border-gray-300 pb-1"
-          : "text-gray-900 hover:text-gray-600 transition-colors"
+          ? "text-gray-900 hover:text-gray-600 transition-colors underline"
+          : "text-gray-900 hover:text-gray-600 transition-colors no-underline"
       }
     >
       {children}

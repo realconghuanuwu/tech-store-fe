@@ -1,4 +1,4 @@
-import { Button, Input } from "antd";
+import { Button, Input, List } from "antd";
 import {
   ArrowRight,
   Facebook,
@@ -9,11 +9,12 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { Link } from "react-router";
 
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12 max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Exclusive Section */}
           <div className="space-y-4">
@@ -27,10 +28,10 @@ export default function Footer() {
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-transparent border-white text-white placeholder:text-gray-400 rounded-r-none"
+                  className="bg-transparent text-white placeholder:text-gray-400 rounded-r-none"
                 />
-                <Button className="bg-transparent border border-white border-l-0 hover:bg-white hover:text-black rounded-l-none">
-                  <ArrowRight className="h-4 w-4" />
+                <Button className="bg-transparent border group  border-l-0  rounded-l-none">
+                  <ArrowRight className="h-4 w-4 text-white group-hover:text-black" />
                 </Button>
               </div>
             </div>
@@ -39,83 +40,84 @@ export default function Footer() {
           {/* Support Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Support</h3>
-            <div className="space-y-3 text-sm text-gray-300">
-              <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <p>
-                  111 Bijoy sarani, Dhaka,
-                  <br />
-                  DH 1515, Bangladesh.
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 flex-shrink-0" />
-                <p>exclusive@gmail.com</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 flex-shrink-0" />
-                <p>+88015-88888-9999</p>
-              </div>
-            </div>
+            <List
+              className="text-sm text-gray-300"
+              split={false}
+              dataSource={[
+                {
+                  icon: <MapPin className="h-4 w-4 text-white" />,
+                  text: "Tân Quý, Tân Phú, TP.HCM",
+                },
+                {
+                  icon: <Mail className="h-4 w-4 flex-shrink-0 text-white" />,
+                  text: "huanluongcong@gmail.com",
+                },
+                {
+                  icon: <Phone className="h-4 w-4 flex-shrink-0 text-white" />,
+                  text: "0987654321",
+                },
+              ]}
+              renderItem={(item) => (
+                <List.Item className="flex !justify-start gap-2">
+                  {item.icon}
+                  <p className="text-white">{item.text}</p>
+                </List.Item>
+              )}
+            />
           </div>
 
           {/* Account Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Account</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  My Account
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Login / Register
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Cart
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Wishlist
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Shop
-                </a>
-              </li>
-            </ul>
+            <List
+              className="text-sm"
+              split={false}
+              dataSource={[
+                { title: "My Account", link: "#" },
+                {
+                  title: "Login / Register",
+                  link: "#",
+                },
+                { title: "Cart", link: "#" },
+                { title: "Wishlist", link: "#" },
+                { title: "Shop", link: "#" },
+              ]}
+              renderItem={(item) => (
+                <List.Item className="py-1 px-0 border-0">
+                  <Link
+                    to={item.link}
+                    className={`text-white hover:text-white transition-colors no-underline`}
+                  >
+                    {item.title}
+                  </Link>
+                </List.Item>
+              )}
+            />
           </div>
 
           {/* Quick Link Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Quick Link</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Terms Of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <List
+              className="text-sm"
+              split={false}
+              dataSource={[
+                { title: "Privacy Policy", link: "#" },
+                { title: "Terms Of Use", link: "#" },
+                { title: "FAQ", link: "#" },
+                { title: "Contact", link: "#" },
+              ]}
+              renderItem={(item) => (
+                <List.Item className="py-1 px-0 border-0">
+                  <Link
+                    to={item.link}
+                    className="text-white hover:text-white transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                </List.Item>
+              )}
+            />
           </div>
 
           {/* Download App Section */}
@@ -128,19 +130,17 @@ export default function Footer() {
 
               {/* QR Code and App Store buttons */}
               <div className="flex gap-3">
-                <div className="w-20 h-20 bg-white rounded flex items-center justify-center">
+                <div className="w-24 h-24 bg-white rounded flex items-center justify-center">
                   {/* QR Code placeholder */}
-                  <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
-                    QR Code
-                  </div>
+                  <div className="text-xs text-black">QR Code</div>
                 </div>
                 <div className="flex flex-col gap-2">
                   {/* Google Play button placeholder */}
-                  <div className="w-24 h-8 bg-gray-800 border border-gray-600 rounded flex items-center justify-center text-xs">
+                  <div className="w-32 h-10 bg-gray-800 border border-gray-600 rounded flex items-center justify-center text-xs">
                     Google Play
                   </div>
                   {/* App Store button placeholder */}
-                  <div className="w-24 h-8 bg-gray-800 border border-gray-600 rounded flex items-center justify-center text-xs">
+                  <div className="w-32 h-10 bg-gray-800 border border-gray-600 rounded flex items-center justify-center text-xs">
                     App Store
                   </div>
                 </div>
@@ -148,18 +148,18 @@ export default function Footer() {
 
               {/* Social Media Icons */}
               <div className="flex gap-4 pt-2">
-                <a href="#" className="hover:text-gray-300 transition-colors">
+                <Link to="#" className="text-white">
                   <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className="hover:text-gray-300 transition-colors">
+                </Link>
+                <Link to="#" className="text-white">
                   <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="hover:text-gray-300 transition-colors">
+                </Link>
+                <Link to="#" className="text-white">
                   <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className="hover:text-gray-300 transition-colors">
+                </Link>
+                <Link to="#" className="text-white">
                   <Linkedin className="h-5 w-5" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -167,8 +167,8 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-6 text-center">
-          <p className="text-sm text-gray-500">
-            © Copyright Rimel 2022. All right reserved
+          <p className="text-sm text-gray-400">
+            © Copyright 2025. All right reserved
           </p>
         </div>
       </div>

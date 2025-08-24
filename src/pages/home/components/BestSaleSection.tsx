@@ -1,71 +1,31 @@
+import ProductCard, {
+  type ProductCardProps,
+} from "@/components/ui/ProductCard";
 import SectionCarousel from "@/components/ui/SectionCarousel";
-import { Card, Typography } from "antd";
-import { Computer, Smartphone, Watch } from "lucide-react";
-import type { ReactNode } from "react";
-
-const products: CategoryProduct[] = [
-  {
-    id: 1,
-    name: "Phones",
-    icon: <Smartphone size={32} />,
-  },
-  {
-    id: 2,
-    name: "Computers",
-    icon: <Computer size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-  {
-    id: 3,
-    name: "SmartWatch",
-    icon: <Watch size={32} />,
-  },
-];
-
-interface CategoryProduct {
-  id: number;
-  name: string;
-  icon: ReactNode;
-}
+import type { ProductRes } from "@/service/product/product.res";
+import { useGetProducts } from "@/service/product/product.service";
 
 export default function BestSaleSection() {
+  const { data, isLoading } = useGetProducts();
+
+  const products = data?.map((product: ProductRes) => ({
+    id: product.id,
+    name: product.title,
+    image: product.image,
+    originalPrice: product.price,
+    salePrice: product.price,
+    discount: product.price,
+    rating: product.rating.rate,
+    reviews: product.rating.count,
+  }));
+
   return (
     <SectionCarousel
+      loading={isLoading}
       title="This Month"
       products={products}
       topRender={<BestSaleSectionTopRender />}
-      renderItem={(item: CategoryProduct) => (
-        <Card bodyStyle={{ width: 200 }} className="!p-4">
-          <div className="flex flex-col justify-center items-center gap-2">
-            {item.icon}
-            <Typography.Title level={5}>{item.name}</Typography.Title>
-          </div>
-        </Card>
-      )}
+      renderItem={(item: ProductCardProps) => <ProductCard product={item} />}
     />
   );
 }

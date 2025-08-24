@@ -1,7 +1,6 @@
-import { Carousel, Menu, Image, type MenuProps } from "antd";
-import Banner1 from "@/assets/images/hero-section/frame.png";
-import DefaultImage from "@/assets/images/default.png";
-import BlobImage from "@/assets/images/1743831323104_blob.jpeg";
+import { Menu, Image, type MenuProps } from "antd";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -30,17 +29,25 @@ const items: MenuItem[] = [
   },
 ];
 
-const carouselStyle: React.CSSProperties = {
-  height: "400px",
-  width: "100%",
-  overflow: "hidden",
-};
-
 const imageStyle: React.CSSProperties = {
   width: "100%",
   height: "100%",
   objectFit: "cover",
   objectPosition: "center",
+  display: "block",
+};
+
+const swiperStyle: React.CSSProperties = {
+  height: "400px",
+  width: "100%",
+};
+
+const slideStyle: React.CSSProperties = {
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 export default function HeroSection() {
@@ -52,18 +59,53 @@ export default function HeroSection() {
       </div>
 
       {/* Promotional Banner */}
-      <div className="flex-1 bg-white text-white relative overflow-hidden">
-        <Carousel autoplay arrows autoplaySpeed={5000} style={carouselStyle}>
-          <div style={carouselStyle}>
-            <Image src={Banner1} alt="Tech Product 1" style={imageStyle} />
-          </div>
-          <div style={carouselStyle}>
-            <Image src={DefaultImage} alt="Tech Product 2" style={imageStyle} />
-          </div>
-          <div style={carouselStyle}>
-            <Image src={BlobImage} alt="Tech Product 3" style={imageStyle} />
-          </div>
-        </Carousel>
+      <div className="flex-1 bg-white text-white relative overflow-hidden hero-section">
+        <Swiper
+          style={swiperStyle}
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={true}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          allowTouchMove={true}
+          grabCursor={true}
+        >
+          <SwiperSlide style={slideStyle}>
+            <Image
+              src={
+                "https://file.hstatic.net/200000722513/file/gearvn-back-to-school-2025-header-pc_658a24f226a146f69278f2c4905c3b22.png"
+              }
+              alt="Tech Product 1"
+              style={imageStyle}
+              preview={false}
+            />
+          </SwiperSlide>
+          <SwiperSlide style={slideStyle}>
+            <Image
+              src={
+                "https://file.hstatic.net/200000722513/file/gearvn-pc-gvn-t8-slider.jpg"
+              }
+              alt="Tech Product 2"
+              style={imageStyle}
+              preview={false}
+            />
+          </SwiperSlide>
+          <SwiperSlide style={slideStyle}>
+            <Image
+              src={
+                "https://file.hstatic.net/200000722513/file/gearvn-gaming-gear-deal-hoi-slider-t8-jpg.jpg"
+              }
+              alt="Tech Product 3"
+              style={imageStyle}
+              preview={false}
+            />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   );
