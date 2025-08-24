@@ -1,25 +1,16 @@
 import { PATH } from "@/constants/router.constant";
 import { Button, Input } from "antd";
 import { Link } from "react-router";
+import LeftBanner from "../components/LeftBanner";
 
 export default function LoginForm() {
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-[calc(100vh-120px)] flex">
       {/* Left side - Illustration */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-cyan-100 to-blue-200 items-center justify-center p-12">
-        <div className="relative">
-          <div className="w-96 h-96 bg-white/20 rounded-2xl flex items-center justify-center">
-            <div className="text-center text-gray-600">
-              <div className="text-6xl mb-4">🛒📱🛍️</div>
-              <p className="text-lg">Shopping Illustration</p>
-              <p className="text-sm opacity-75">Replace with actual image</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <LeftBanner />
 
       {/* Right side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
+      <div className="w-full lg:w-1/2 flex items-center justify-center pt-1 pb-4">
         <div className="w-full max-w-md space-y-6">
           <div className="space-y-2">
             <h1 className="text-3xl font-semibold text-gray-900">
@@ -53,13 +44,13 @@ export default function LoginForm() {
               />
             </div>
 
-            <div className="space-y-4 pt-4">
+            <div className="space-y-4 pt-3">
               <Button className="w-full h-12 bg-red-500 hover:bg-red-600 text-white font-medium">
                 Log in
               </Button>
             </div>
 
-            <div className="text-center pt-4">
+            <div className="text-center">
               <p className="text-center">
                 <Link
                   to={PATH.FORGOT_PASSWORD}

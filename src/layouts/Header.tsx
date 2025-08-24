@@ -1,7 +1,17 @@
 import { PATH } from "@/constants/router.constant";
-import { Avatar, Button, Input, Dropdown } from "antd";
-import { Search, Heart, ShoppingCart, ChevronDown, User } from "lucide-react";
-import { Link, NavLink } from "react-router";
+import { Button, Input, Dropdown } from "antd";
+import {
+  Search,
+  Heart,
+  ShoppingCart,
+  ChevronDown,
+  User,
+  Package,
+  XCircle,
+  Star,
+  LogOut,
+} from "lucide-react";
+import { NavLink } from "react-router";
 import type { MenuProps } from "antd";
 
 export default function Header() {
@@ -16,9 +26,45 @@ export default function Header() {
     },
   ];
 
+  const userMenuItems: MenuProps["items"] = [
+    {
+      key: "account",
+      label: "Manage My Account",
+      icon: <User size={16} className="text-gray-600" />,
+    },
+    {
+      key: "orders",
+      label: "My Order",
+      icon: <Package size={16} className="text-gray-600" />,
+    },
+    {
+      key: "cancellations",
+      label: "My Cancellations",
+      icon: <XCircle size={16} className="text-gray-600" />,
+    },
+    {
+      key: "reviews",
+      label: "My Reviews",
+      icon: <Star size={16} className="text-gray-600" />,
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: "logout",
+      label: "Logout",
+      icon: <LogOut size={16} className="text-gray-600" />,
+    },
+  ];
+
   const handleLanguageChange = ({ key }: { key: string }) => {
     console.log("Selected language:", key);
     // TODO: Implement language change logic
+  };
+
+  const handleUserMenuClick = ({ key }: { key: string }) => {
+    console.log("User menu clicked:", key);
+    // TODO: Implement user menu actions
   };
 
   return (
@@ -81,9 +127,19 @@ export default function Header() {
             <Button type="link" className="hover:bg-gray-100">
               <ShoppingCart size={20} className="text-gray-700" />
             </Button>
-            <Button type="link" className="hover:bg-gray-100">
-              <User size={20} className="text-gray-700" />
-            </Button>
+            <Dropdown
+              menu={{
+                items: userMenuItems,
+                onClick: handleUserMenuClick,
+                className: "!bg-white !border !border-gray-200 !shadow-lg",
+              }}
+              placement="bottomRight"
+              trigger={["click"]}
+            >
+              <Button type="link" className="hover:bg-gray-100">
+                <User size={20} className="text-gray-700" />
+              </Button>
+            </Dropdown>
           </div>
         </div>
       </div>
