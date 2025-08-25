@@ -74,6 +74,12 @@ export default function OurProductSection() {
       showNavigation={true}
       autoplay={false}
       loop={false}
+      customBreakpoints={{
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 16,
+        },
+      }}
     />
   );
 }

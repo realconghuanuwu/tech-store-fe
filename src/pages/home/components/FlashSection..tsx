@@ -60,32 +60,42 @@ const countdown = {
 
 function FlashCardTopRender() {
   return (
-    <div className="flex items-center gap-8">
-      <h2 className="text-4xl font-semibold">Flash Sales</h2>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+        Flash Sales
+      </h2>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <div className="text-center">
           <div className="text-xs text-gray-600">Days</div>
-          <div className="text-2xl font-bold">{formatTime(countdown.days)}</div>
+          <div className="text-lg sm:text-xl lg:text-2xl font-bold">
+            {formatTime(countdown.days)}
+          </div>
         </div>
-        <div className="text-2xl font-bold text-c-main-red">:</div>
+        <div className="text-lg sm:text-xl lg:text-2xl font-bold text-c-main-red">
+          :
+        </div>
         <div className="text-center">
           <div className="text-xs text-gray-600">Hours</div>
-          <div className="text-2xl font-bold">
+          <div className="text-lg sm:text-xl lg:text-2xl font-bold">
             {formatTime(countdown.hours)}
           </div>
         </div>
-        <div className="text-2xl font-bold text-c-main-red">:</div>
+        <div className="text-lg sm:text-xl lg:text-2xl font-bold text-c-main-red">
+          :
+        </div>
         <div className="text-center">
           <div className="text-xs text-gray-600">Minutes</div>
-          <div className="text-2xl font-bold">
+          <div className="text-lg sm:text-xl lg:text-2xl font-bold">
             {formatTime(countdown.minutes)}
           </div>
         </div>
-        <div className="text-2xl font-bold text-c-main-red">:</div>
+        <div className="text-lg sm:text-xl lg:text-2xl font-bold text-c-main-red">
+          :
+        </div>
         <div className="text-center">
           <div className="text-xs text-gray-600">Seconds</div>
-          <div className="text-2xl font-bold">
+          <div className="text-lg sm:text-xl lg:text-2xl font-bold">
             {formatTime(countdown.seconds)}
           </div>
         </div>
@@ -97,7 +107,7 @@ function FlashCardTopRender() {
 function FlashCardBottomRender() {
   return (
     <div className="text-center">
-      <Button className="!py-6 !px-8  !bg-c-main-red !border-none !text-white">
+      <Button className="!py-4 sm:!py-6 !px-6 sm:!px-8 !bg-c-main-red !border-none !text-white !text-sm sm:!text-base">
         View All Products
       </Button>
     </div>

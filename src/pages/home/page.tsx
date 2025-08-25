@@ -11,15 +11,17 @@ import CommonPage from "@/components/ui/CommonPage";
 export default function HomePage() {
   return (
     <CommonPage>
-      <main>
-        <HeroSection />
-        <FlashSection />
-        <CategorySection />
-        <BestSaleSection />
-        <BannerSection />
-        <OurProductSection />
-        <NewArrivalSection />
-        <ServiceLabelSection />
+      <main className="min-h-screen">
+        <div className="px-4 md:px-0">
+          <HeroSection />
+          <FlashSection />
+          <CategorySection />
+          <BestSaleSection />
+          <OurProductSection />
+          <NewArrivalSection />
+          <BannerSection />
+          <ServiceLabelSection />
+        </div>
       </main>
     </CommonPage>
   );

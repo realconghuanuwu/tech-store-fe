@@ -14,7 +14,7 @@ export default function CommonPage({
   breadcrumbItems,
 }: CommonPageProps) {
   return (
-    <div className={cn("max-w-7xl mx-auto py-8", className)}>
+    <div className={cn("max-w-7xl mx-auto px-4 md:px-0 py-8", className)}>
       {breadcrumbItems && (
         <Breadcrumb items={breadcrumbItems} className="mb-8" />
       )}

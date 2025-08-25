@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Heart, Minus, Plus, Truck, RotateCcw } from "lucide-react";
-import { Button, Spin } from "antd";
+import { Button, Rate, Spin } from "antd";
 import CommonPage from "@/components/ui/CommonPage";
 import CImage from "@/components/CImage";
 import { PATH } from "@/constants/router.constant";
@@ -150,18 +150,12 @@ export default function ProductDetail() {
             <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
             <div className="flex items-center gap-4 mb-4">
               <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <span
-                    key={i}
-                    className={`text-sm ${
-                      i < Math.floor(product.rating.rate)
-                        ? "text-yellow-400"
-                        : "text-gray-300"
-                    }`}
-                  >
-                    ★
-                  </span>
-                ))}
+                <Rate
+                  className="text-[16px]"
+                  allowHalf
+                  defaultValue={product.rating.rate}
+                  disabled
+                />
                 <span className="text-sm text-muted-foreground ml-2">
                   ({product.rating.count} Reviews)
                 </span>

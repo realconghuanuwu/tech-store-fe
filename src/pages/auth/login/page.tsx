@@ -5,7 +5,7 @@ import LeftBanner from "../components/LeftBanner";
 
 export default function LoginForm() {
   return (
-    <div className="min-h-[calc(100vh-120px)] flex">
+    <div className="min-h-[calc(100vh-120px)] md:px-0 px-4 flex">
       {/* Left side - Illustration */}
       <LeftBanner />
 

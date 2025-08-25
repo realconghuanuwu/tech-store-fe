@@ -1,5 +1,4 @@
 import SectionCarousel from "@/components/ui/SectionCarousel";
-import { Card, Typography } from "antd";
 import {
   Computer,
   Smartphone,
@@ -14,57 +13,57 @@ const products: CategoryProduct[] = [
   {
     id: 1,
     name: "Phones",
-    icon: <Smartphone size={32} />,
+    icon: <Smartphone className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 2,
     name: "Computers",
-    icon: <Computer size={32} />,
+    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 3,
     name: "SmartWatch",
-    icon: <Watch size={32} />,
+    icon: <Watch className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 4,
     name: "Headphones",
-    icon: <Headphones size={32} />,
+    icon: <Headphones className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 5,
     name: "Camera",
-    icon: <Camera size={32} />,
+    icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 6,
     name: "Gaming",
-    icon: <Gamepad2 size={32} />,
+    icon: <Gamepad2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 7,
     name: "Tablets",
-    icon: <Computer size={32} />,
+    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 8,
     name: "Audio",
-    icon: <Headphones size={32} />,
+    icon: <Headphones className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 9,
     name: "Accessories",
-    icon: <Watch size={32} />,
+    icon: <Watch className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 10,
     name: "Laptops",
-    icon: <Computer size={32} />,
+    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
   {
     id: 11,
     name: "Monitors",
-    icon: <Computer size={32} />,
+    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
   },
 ];
 
@@ -83,11 +82,15 @@ export default function CategorySection() {
       renderItem={(item: CategoryProduct) => (
         <div
           key={item.id}
-          className="w-48 h-40 flex justify-center items-center shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] group rounded-lg p-4 hover:bg-c-main-red hover:text-white transition-all duration-300 cursor-pointer"
+          className="w-32 sm:w-40 md:w-48 h-28 sm:h-32 md:h-40 flex justify-center items-center shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] group rounded-lg p-3 sm:p-4 hover:bg-c-main-red hover:text-white transition-all duration-300 cursor-pointer"
         >
-          <div className="flex flex-col justify-center items-center  gap-2">
-            {item.icon}
-            <p className="!group-hover:text-white">{item.name}</p>
+          <div className="flex flex-col justify-center items-center gap-1.5 sm:gap-2">
+            <div className="text-gray-600 group-hover:text-white">
+              {item.icon}
+            </div>
+            <p className="!group-hover:text-white text-sm sm:text-base font-medium text-center">
+              {item.name}
+            </p>
           </div>
         </div>
       )}
@@ -96,14 +99,34 @@ export default function CategorySection() {
       showNavigation={true}
       autoplay={false}
       loop={false}
+      customBreakpoints={{
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 8,
+        },
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 14,
+        },
+        1024: {
+          slidesPerView: 6,
+          spaceBetween: 16,
+        },
+      }}
     />
   );
 }
 
 function CategorySectionTopRender() {
   return (
-    <div className="flex items-end gap-8">
-      <h2 className="text-4xl font-semibold">Browse By Category</h2>
+    <div className="flex items-end gap-4 sm:gap-8">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+        Browse By Category
+      </h2>
     </div>
   );
 }
