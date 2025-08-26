@@ -66,6 +66,11 @@ export default function CartPage({
   const shipping = 0; // Free shipping
   const total = subtotal + shipping;
 
+  const handleCheckout = () => {
+    onStep(2);
+    window.scrollTo(0, 0);
+  };
+
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -192,7 +197,7 @@ export default function CartPage({
           <Button
             className="w-full mt-6 bg-c-main-red hover:bg-c-main-red text-white border-c-main-red py-3 text-base font-medium"
             size="large"
-            onClick={() => onStep(2)}
+            onClick={handleCheckout}
           >
             Proceed to checkout
           </Button>

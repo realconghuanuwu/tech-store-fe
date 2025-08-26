@@ -14,7 +14,9 @@ function MainLayout() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Outlet />
+      <main className="pt-[180px]  md:pt-[130px]">
+        <Outlet />
+      </main>
       <Footer />
       <GoToTopButton />
     </div>

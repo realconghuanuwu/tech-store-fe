@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-const products: CategoryProduct[] = [
+export const products: CategoryProduct[] = [
   {
     id: 1,
     name: "Phones",

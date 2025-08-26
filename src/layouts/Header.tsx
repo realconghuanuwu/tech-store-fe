@@ -16,6 +16,7 @@ import { Link, NavLink } from "react-router";
 import type { MenuProps } from "antd";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { products } from "@/pages/home/components/CategorySection";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -74,18 +75,15 @@ export default function Header() {
     // TODO: Implement user menu actions
   };
 
-  const handleToWishList = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleToWishList = () => {
     navigate(PATH.WISH_LIST);
   };
 
-  const handleToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleToCart = () => {
     navigate(PATH.CART);
   };
 
-  const handleGoHome = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleGoHome = () => {
     navigate(PATH.HOME);
   };
 
@@ -95,7 +93,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+    <header className="w-full fixed-header shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
       {/* Top promotional banner */}
       <div className="bg-black text-white py-3 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -249,41 +247,20 @@ export default function Header() {
           {/* Mobile User Menu */}
           <div className="mt-4">
             <div className="px-4 py-3 bg-gray-50">
-              <h3 className="text-sm font-semibold text-gray-700">Account</h3>
+              <h3 className="text-sm font-semibold text-gray-700">Category</h3>
             </div>
             <List
               dataSource={[
-                {
-                  key: "account",
-                  label: "Manage My Account",
-                  icon: <User size={16} className="text-gray-600" />,
-                  onClick: () => {
-                    navigate(PATH.USER_PROFILE);
-                    setMobileMenuOpen(false);
-                  },
-                },
-                {
-                  key: "orders",
-                  label: "My Order",
-                  icon: <Package size={16} className="text-gray-600" />,
+                ...products?.map((item) => ({
+                  key: item.name,
+                  label: item.name,
+                  icon: item.icon,
+                  className: "text-black",
                   onClick: () => setMobileMenuOpen(false),
-                },
-                {
-                  key: "cancellations",
-                  label: "My Cancellations",
-                  icon: <XCircle size={16} className="text-gray-600" />,
-                  onClick: () => setMobileMenuOpen(false),
-                },
-                {
-                  key: "reviews",
-                  label: "My Reviews",
-                  icon: <Star size={16} className="text-gray-600" />,
-                  onClick: () => setMobileMenuOpen(false),
-                },
+                })),
                 {
                   key: "logout",
                   label: "Logout",
-                  icon: <LogOut size={16} className="text-red-600" />,
                   onClick: () => setMobileMenuOpen(false),
                   className: "text-red-600",
                 },

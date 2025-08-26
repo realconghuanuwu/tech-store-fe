@@ -82,6 +82,7 @@ export default function CheckoutPage() {
   const total = subtotal + shipping;
 
   const handlePlaceOrder = () => {
+    window.scrollTo(0, 0);
     setIsSuccessOrder(true);
   };
 

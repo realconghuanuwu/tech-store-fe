@@ -54,40 +54,49 @@ export default function AccountSidebar({
   };
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 min-h-screen">
-      {menuSections.map((section, sectionIndex) => (
-        <div key={section.title} className="mb-6">
-          {/* Section Title */}
-          <div className="mb-3">
-            <h3 className="text-sm font-semibold text-gray-900">
-              {section.title}
-            </h3>
-          </div>
-
-          {/* Section Items */}
-          <List
-            size="small"
-            dataSource={section.items}
-            renderItem={(item) => (
-              <List.Item
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors ${
-                  selectedKey === item.key
-                    ? "!text-c-main-red"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
-                onClick={() => handleMenuClick(item.key)}
-              >
-                <span className="text-sm">{item.label}</span>
-              </List.Item>
-            )}
-          />
-
-          {/* Divider between sections (except for last section) */}
-          {sectionIndex < menuSections.length - 1 && (
-            <Divider className="my-4" />
-          )}
+    <div className="w-64 lg:w-64 bg-white border-r border-gray-200 min-h-screen lg:min-h-screen max-h-screen lg:max-h-none overflow-y-auto">
+      <div className="p-4 lg:p-6">
+        {/* Desktop Title - Hidden on mobile */}
+        <div className="hidden lg:block mb-6">
+          <h2 className="text-xl font-semibold text-gray-900">My Account</h2>
         </div>
-      ))}
+
+        {menuSections.map((section, sectionIndex) => (
+          <div key={section.title} className="mb-6">
+            {/* Section Title */}
+            <div className="mb-3">
+              <h3 className="text-sm font-semibold text-gray-900">
+                {section.title}
+              </h3>
+            </div>
+
+            {/* Section Items */}
+            <List
+              size="small"
+              dataSource={section.items}
+              renderItem={(item) => (
+                <List.Item
+                  className={`px-3 py-3 lg:py-2 rounded-md cursor-pointer transition-colors ${
+                    selectedKey === item.key
+                      ? "!text-c-main-red bg-red-50 border-l-4 border-red-500"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  }`}
+                  onClick={() => handleMenuClick(item.key)}
+                >
+                  <span className="text-sm lg:text-sm font-medium">
+                    {item.label}
+                  </span>
+                </List.Item>
+              )}
+            />
+
+            {/* Divider between sections (except for last section) */}
+            {sectionIndex < menuSections.length - 1 && (
+              <Divider className="my-4" />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

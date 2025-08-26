@@ -63,11 +63,11 @@ export default function EditProfile() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-c-main-red mb-6">
+      <h1 className="text-xl sm:text-2xl font-bold text-c-main-red mb-4 sm:mb-6">
         Edit Your Profile
       </h1>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Personal Information */}
         <Card className="shadow-sm">
           <Form
@@ -77,7 +77,7 @@ export default function EditProfile() {
             onFinish={handleSaveProfile}
             className="space-y-4"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <Form.Item
                 label="First Name"
                 name="firstName"
@@ -138,7 +138,7 @@ export default function EditProfile() {
 
         {/* Password Changes */}
         <Card className="shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
             Password Changes
           </h2>
           <Form
@@ -164,7 +164,7 @@ export default function EditProfile() {
               />
             </Form.Item>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <Form.Item
                 label="New Password"
                 name="newPassword"
@@ -212,11 +212,11 @@ export default function EditProfile() {
         </Card>
 
         {/* Action Buttons */}
-        <div className="flex justify-end space-x-4 pt-4">
+        <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4">
           <Button
             size="large"
             onClick={handleCancel}
-            className="border-gray-300 text-gray-700 hover:border-gray-400"
+            className="border-gray-300 text-gray-700 hover:border-gray-400 order-2 sm:order-1"
           >
             Cancel
           </Button>
@@ -228,7 +228,7 @@ export default function EditProfile() {
               form.submit();
               passwordForm.submit();
             }}
-            className="bg-c-main-red border-c-main-red hover:bg-red-700 hover:border-red-700"
+            className="bg-c-main-red border-c-main-red hover:bg-red-700 hover:border-red-700 order-1 sm:order-2"
           >
             Save Changes
           </Button>

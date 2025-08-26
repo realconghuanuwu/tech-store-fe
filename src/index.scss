@@ -99,3 +99,23 @@ body {
     gap: 1rem;
   }
 }
+
+/* Fixed header styles */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+}
+
+/* Ensure body doesn't have horizontal scroll when header is fixed */
+body {
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
