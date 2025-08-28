@@ -33,7 +33,9 @@ export default function BestSaleSection() {
 function BestSaleSectionTopRender() {
   return (
     <div className="flex items-end gap-8 mb-8">
-      <h2 className="text-4xl font-semibold">Best Selling Products</h2>
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+        Best Selling Products
+      </h2>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import SectionCarousel from "@/components/ui/SectionCarousel";
 import ProductCard, {
   type ProductCardProps,
 } from "@/components/ui/ProductCard";
+import ReviewModal from "./components/ReviewModal";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -23,6 +24,10 @@ export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
+  const [isOpenReviewModal, setIsOpenReviewModal] = useState({
+    isOpen: false,
+    productId: null,
+  });
 
   // Fetch product data from API
   const { data: product, isLoading, error } = useGetProductById(productId);
@@ -72,6 +77,20 @@ export default function ProductDetail() {
     },
   ];
 
+  const handleShowReviewModal = () => {
+    setIsOpenReviewModal({
+      isOpen: true,
+      productId: Number(productId),
+    });
+  };
+
+  const handleCloseReviewModal = () => {
+    setIsOpenReviewModal({
+      isOpen: false,
+      productId: null,
+    });
+  };
+
   // Loading state
   if (isLoading) {
     return (
@@ -106,185 +125,196 @@ export default function ProductDetail() {
   }
 
   return (
-    <CommonPage breadcrumbItems={breadcrumbItems}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Product Images */}
-        <div className="space-y-4">
-          {/* Main Image */}
-          <div className="bg-gray-50 rounded-lg p-8 flex items-center justify-center">
-            <CImage
-              src={productImages[selectedImage] || ""}
-              alt={product.title}
-              showPreview={true}
-              className="w-full !h-[400px] object-contain"
-            />
-          </div>
-
-          {/* Thumbnail Images */}
-          <div className="flex gap-4">
-            {productImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`bg-gray-50 rounded-lg p-4 flex items-center justify-center size-20 border-2 transition-colors ${
-                  selectedImage === index
-                    ? "border-red-500"
-                    : "border-transparent"
-                }`}
-              >
-                <CImage
-                  src={image || ""}
-                  alt={`${product.title} thumbnail ${index + 1}`}
-                  showPreview={false}
-                  className="w-[60px] h-[60px]"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Product Information */}
-        <div className="space-y-6">
-          {/* Title and Rating */}
-          <div>
-            <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="flex items-center">
-                <Rate
-                  className="text-[16px]"
-                  allowHalf
-                  defaultValue={product.rating.rate}
-                  disabled
-                />
-                <span className="text-sm text-muted-foreground ml-2">
-                  ({product.rating.count} Reviews)
-                </span>
-              </div>
-              <span className="text-green-600 text-sm">In Stock</span>
+    <>
+      <CommonPage breadcrumbItems={breadcrumbItems}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Product Images */}
+          <div className="space-y-4">
+            {/* Main Image */}
+            <div className="bg-gray-50 rounded-lg p-8 flex items-center justify-center">
+              <CImage
+                src={productImages[selectedImage] || ""}
+                alt={product.title}
+                showPreview={true}
+                className="w-full !h-[400px] object-contain"
+              />
             </div>
-            <p className="text-2xl font-semibold">
-              ${product.price.toFixed(2)}
-            </p>
-          </div>
 
-          {/* Description */}
-          <p className="text-muted-foreground leading-relaxed">
-            {product.description}
-          </p>
-
-          <hr className="border-gray-200" />
-
-          {/* Colors */}
-          <div>
-            <h3 className="font-medium mb-3">Colours:</h3>
-            <div className="flex gap-2">
-              {colors.map((color, index) => (
+            {/* Thumbnail Images */}
+            <div className="flex gap-4">
+              {productImages.map((image, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedColor(index)}
-                  className={`w-6 h-6 rounded-full border-2 transition-all ${
-                    selectedColor === index
-                      ? "border-gray-800 scale-110"
-                      : "border-gray-300"
-                  }`}
-                  style={{ backgroundColor: color.value }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Size */}
-          <div>
-            <h3 className="font-medium mb-3">Size:</h3>
-            <div className="flex gap-2">
-              {sizes.map((size) => (
-                <Button
-                  key={size}
-                  type={selectedSize === size ? "primary" : "default"}
-                  onClick={() => setSelectedSize(size)}
-                  className={`${
-                    selectedSize === size
-                      ? "bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600"
-                      : "border-gray-300 hover:border-gray-400"
+                  onClick={() => setSelectedImage(index)}
+                  className={`bg-gray-50 rounded-lg p-4 flex items-center justify-center size-20 border-2 transition-colors ${
+                    selectedImage === index
+                      ? "border-red-500"
+                      : "border-transparent"
                   }`}
                 >
-                  {size}
-                </Button>
+                  <CImage
+                    src={image || ""}
+                    alt={`${product.title} thumbnail ${index + 1}`}
+                    showPreview={false}
+                    className="w-[60px] h-[60px]"
+                  />
+                </button>
               ))}
             </div>
           </div>
 
-          {/* Quantity and Actions */}
-          <div className="flex items-center gap-4">
-            <div className="flex items-center border rounded">
-              <Button
-                type="text"
-                onClick={() => handleQuantityChange(-1)}
-                icon={<Minus className="w-4 h-4" />}
-                className="border-0 hover:bg-gray-100"
-              />
-              <span className="px-4 py-2 border-x min-w-[60px] text-center">
-                {quantity}
-              </span>
-              <Button
-                type="text"
-                onClick={() => handleQuantityChange(1)}
-                icon={<Plus className="w-4 h-4" />}
-                className="border-0 hover:bg-gray-100"
-              />
+          {/* Product Information */}
+          <div className="space-y-6">
+            {/* Title and Rating */}
+            <div>
+              <h1 className="text-2xl font-semibold mb-2">{product.title}</h1>
+              <div className="flex items-center gap-4 mb-4">
+                <div
+                  className="flex items-center"
+                  onClick={handleShowReviewModal}
+                >
+                  <Rate
+                    className="text-[16px]"
+                    allowHalf
+                    defaultValue={product.rating.rate}
+                    disabled
+                  />
+                  <span className="text-sm text-muted-foreground ml-2 text-blue-800 cursor-pointer">
+                    ({product.rating.count} Reviews)
+                  </span>
+                </div>
+                <span className="text-green-600 text-sm">In Stock</span>
+              </div>
+              <p className="text-2xl font-semibold">
+                ${product.price.toFixed(2)}
+              </p>
             </div>
 
-            <Button
-              type="primary"
-              size="large"
-              className="bg-red-500 hover:bg-red-600 border-red-500 px-8"
-            >
-              Buy Now
-            </Button>
-
-            <Button
-              type="default"
-              icon={<Heart className="w-5 h-5" />}
-              className="border-gray-300 hover:border-gray-400"
-            />
-          </div>
-
-          {/* Delivery Information */}
-          <div className="border rounded-lg p-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gray-100 rounded">
-                <Truck className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="font-medium">Free Delivery</h4>
-                <p className="text-sm text-muted-foreground">
-                  Enter your postal code for Delivery Availability
-                </p>
-              </div>
-            </div>
+            {/* Description */}
+            <p className="text-muted-foreground leading-relaxed">
+              {product.description}
+            </p>
 
             <hr className="border-gray-200" />
 
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gray-100 rounded">
-                <RotateCcw className="w-5 h-5" />
+            {/* Colors */}
+            <div>
+              <h3 className="font-medium mb-3">Colours:</h3>
+              <div className="flex gap-2">
+                {colors.map((color, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedColor(index)}
+                    className={`w-6 h-6 rounded-full border-2 transition-all ${
+                      selectedColor === index
+                        ? "border-gray-800 scale-110"
+                        : "border-gray-300"
+                    }`}
+                    style={{ backgroundColor: color.value }}
+                  />
+                ))}
               </div>
-              <div>
-                <h4 className="font-medium">Return Delivery</h4>
-                <p className="text-sm text-muted-foreground">
-                  Free 30 Days Delivery Returns. Details
-                </p>
+            </div>
+
+            {/* Size */}
+            <div>
+              <h3 className="font-medium mb-3">Size:</h3>
+              <div className="flex gap-2">
+                {sizes.map((size) => (
+                  <Button
+                    key={size}
+                    type={selectedSize === size ? "primary" : "default"}
+                    onClick={() => setSelectedSize(size)}
+                    className={`${
+                      selectedSize === size
+                        ? "bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600"
+                        : "border-gray-300 hover:border-gray-400"
+                    }`}
+                  >
+                    {size}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quantity and Actions */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center border rounded">
+                <Button
+                  type="text"
+                  onClick={() => handleQuantityChange(-1)}
+                  icon={<Minus className="w-4 h-4" />}
+                  className="border-0 hover:bg-gray-100"
+                />
+                <span className="px-4 py-2 border-x min-w-[60px] text-center">
+                  {quantity}
+                </span>
+                <Button
+                  type="text"
+                  onClick={() => handleQuantityChange(1)}
+                  icon={<Plus className="w-4 h-4" />}
+                  className="border-0 hover:bg-gray-100"
+                />
+              </div>
+
+              <Button
+                type="primary"
+                size="large"
+                className="bg-red-500 hover:bg-red-600 border-red-500 px-8"
+              >
+                Buy Now
+              </Button>
+
+              <Button
+                type="default"
+                icon={<Heart className="w-5 h-5" />}
+                className="border-gray-300 hover:border-gray-400"
+              />
+            </div>
+
+            {/* Delivery Information */}
+            <div className="border rounded-lg p-4 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gray-100 rounded">
+                  <Truck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Free Delivery</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Enter your postal code for Delivery Availability
+                  </p>
+                </div>
+              </div>
+
+              <hr className="border-gray-200" />
+
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gray-100 rounded">
+                  <RotateCcw className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Return Delivery</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Free 30 Days Delivery Returns. Details
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <SectionCarousel
-        loading={isLoading}
-        title="Related Item"
-        products={products}
-        renderItem={(item: ProductCardProps) => <ProductCard product={item} />}
+        <SectionCarousel
+          loading={isLoading}
+          title="Related Item"
+          products={products}
+          renderItem={(item: ProductCardProps) => (
+            <ProductCard product={item} />
+          )}
+        />
+      </CommonPage>
+      <ReviewModal
+        isOpenReviewModal={isOpenReviewModal}
+        onCloseReviewModal={handleCloseReviewModal}
       />
-    </CommonPage>
+    </>
   );
 }

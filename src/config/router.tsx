@@ -15,6 +15,7 @@ const UserProfilePage = lazy(() => import("@/pages/user-profile/page"));
 const AboutUsPage = lazy(() => import("@/pages/about-us/page"));
 const ContactPage = lazy(() => import("@/pages/contact/page"));
 const ProductDetailPage = lazy(() => import("@/pages/product-detail/page"));
+const ProductPage = lazy(() => import("@/pages/products/page"));
 
 export const router = createBrowserRouter([
   // Public routes - accessible to everyone without authentication
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: PATH.USER_PROFILE,
         element: <LazyLoading Component={UserProfilePage} />,
+      },
+      {
+        path: PATH.PRODUCT.ROOT,
+        element: <LazyLoading Component={ProductPage} />,
       },
     ],
   },

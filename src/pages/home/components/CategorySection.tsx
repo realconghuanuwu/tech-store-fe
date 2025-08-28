@@ -13,57 +13,57 @@ export const products: CategoryProduct[] = [
   {
     id: 1,
     name: "Phones",
-    icon: <Smartphone className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Smartphone className="size-4" />,
   },
   {
     id: 2,
     name: "Computers",
-    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Computer className="size-4" />,
   },
   {
     id: 3,
     name: "SmartWatch",
-    icon: <Watch className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Watch className="size-4" />,
   },
   {
     id: 4,
     name: "Headphones",
-    icon: <Headphones className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Headphones className="size-4" />,
   },
   {
     id: 5,
     name: "Camera",
-    icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Camera className="size-4" />,
   },
   {
     id: 6,
     name: "Gaming",
-    icon: <Gamepad2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Gamepad2 className="size-4" />,
   },
   {
     id: 7,
     name: "Tablets",
-    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Computer className="size-4" />,
   },
   {
     id: 8,
     name: "Audio",
-    icon: <Headphones className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Headphones className="size-4" />,
   },
   {
     id: 9,
     name: "Accessories",
-    icon: <Watch className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Watch className="size-4" />,
   },
   {
     id: 10,
     name: "Laptops",
-    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Computer className="size-4" />,
   },
   {
     id: 11,
     name: "Monitors",
-    icon: <Computer className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+    icon: <Computer className="size-4" />,
   },
 ];
 

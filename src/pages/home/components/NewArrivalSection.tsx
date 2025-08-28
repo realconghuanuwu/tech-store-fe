@@ -7,7 +7,9 @@ export default function NewArrivalSection() {
       <SectionHeader title="New Featured" />
       <div className={cn("flex items-center justify-between gap-2 mb-8")}>
         <div className="flex items-end gap-8 mb-8">
-          <h2 className="text-4xl font-semibold">New Arrival</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+            New Arrival
+          </h2>
         </div>
       </div>
       <div>

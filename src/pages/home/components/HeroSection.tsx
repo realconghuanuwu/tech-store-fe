@@ -2,33 +2,10 @@ import { Menu, Image, type MenuProps } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "./HeroSection.css";
+import { useNavigate } from "react-router";
+import { PATH } from "@/constants/router.constant";
 
 type MenuItem = Required<MenuProps>["items"][number];
-
-const items: MenuItem[] = [
-  {
-    key: "1",
-    label: "Woman's Fashion",
-    children: [
-      { key: "1.1", label: "Option 1" },
-      { key: "1.2", label: "Option 2" },
-      { key: "1.3", label: "Option 3" },
-      { key: "1.4", label: "Option 4" },
-    ],
-  },
-  {
-    key: "2",
-    label: "Electronics",
-  },
-  {
-    key: "3",
-    label: "Groceries & Pets",
-  },
-  {
-    key: "4",
-    label: "Health & Beauty",
-  },
-];
 
 const imageStyle: React.CSSProperties = {
   width: "100%",
@@ -57,6 +34,45 @@ const slideStyle: React.CSSProperties = {
 };
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
+  const items: MenuItem[] = [
+    {
+      key: "1",
+      label: "Woman's Fashion",
+      children: [
+        { key: "1.1", label: "Option 1" },
+        { key: "1.2", label: "Option 2" },
+        { key: "1.3", label: "Option 3" },
+        { key: "1.4", label: "Option 4" },
+      ],
+      onClick: () => {
+        navigate(PATH.PRODUCT.ROOT);
+      },
+    },
+    {
+      key: "2",
+      label: "Electronics",
+      onClick: () => {
+        navigate(PATH.PRODUCT.ROOT);
+      },
+    },
+    {
+      key: "3",
+      label: "Groceries & Pets",
+      onClick: () => {
+        navigate(PATH.PRODUCT.ROOT);
+      },
+    },
+    {
+      key: "4",
+      label: "Health & Beauty",
+      onClick: () => {
+        navigate(PATH.PRODUCT.ROOT);
+      },
+    },
+  ];
+
   return (
     <div className="flex bg-white">
       {/* Category Sidebar - Hidden on mobile */}

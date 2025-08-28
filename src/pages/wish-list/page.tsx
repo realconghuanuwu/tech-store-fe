@@ -20,21 +20,26 @@ export default function WishListPage() {
   }));
   return (
     <CommonPage>
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-2xl font-medium mb-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+        <p className="text-xl sm:text-2xl font-medium">
           Wishlist ({products?.length})
         </p>
-        <Button className="px-12 py-6">Move All To Cart</Button>
+        <Button className="w-full sm:w-auto px-8 py-5">Move All To Cart</Button>
       </div>
-      <Row gutter={[16, 16]}>
+      <Row
+        gutter={[
+          { xs: 8, sm: 12, md: 16, lg: 24, xl: 24 },
+          { xs: 8, sm: 12, md: 16, lg: 24, xl: 24 },
+        ]}
+      >
         {products?.map((product) => (
-          <Col span={6}>
-            <ProductCard key={product.id} product={product} hideRating />
+          <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
+            <ProductCard product={product} hideRating />
           </Col>
         ))}
       </Row>
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-2xl font-medium mb-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 my-6">
+        <p className="text-xl sm:text-2xl font-medium">
           Wishlist ({products?.length})
         </p>
       </div>
@@ -42,12 +47,18 @@ export default function WishListPage() {
       <SectionHeader
         title="Just For You"
         className="my-6"
-        right={<Button className="px-12 py-6">See All</Button>}
+        right={<Button className="w-full sm:w-auto px-12 py-6">See All</Button>}
       />
-      <Row gutter={[16, 16]} className="mb-6">
+      <Row
+        gutter={[
+          { xs: 8, sm: 12, md: 16, lg: 24, xl: 24 },
+          { xs: 8, sm: 12, md: 16, lg: 24, xl: 24 },
+        ]}
+        className="mb-6"
+      >
         {products?.map((product) => (
-          <Col span={6}>
-            <ProductCard key={product.id} product={product} />
+          <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
+            <ProductCard product={product} />
           </Col>
         ))}
       </Row>

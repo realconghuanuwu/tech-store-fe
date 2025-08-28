@@ -174,19 +174,16 @@ export default function Header() {
                 />
               </Badge>
             </Button>
+
             <Dropdown
               menu={{
                 items: userMenuItems,
                 onClick: handleUserMenuClick,
-                className: "!bg-white !border !border-gray-200 !shadow-lg",
               }}
               placement="bottomRight"
               trigger={["click"]}
             >
-              <Button
-                type="link"
-                className="hover:bg-gray-100 p-2 hidden md:block"
-              >
+              <Button type="link" className="hover:bg-gray-100 p-2">
                 <User size={18} className="text-gray-700 sm:w-5 sm:h-5" />
               </Button>
             </Dropdown>
