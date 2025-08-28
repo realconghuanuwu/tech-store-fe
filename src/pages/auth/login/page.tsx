@@ -14,7 +14,7 @@ export default function LoginForm() {
         <div className="w-full max-w-md space-y-6">
           <div className="space-y-2">
             <h1 className="text-3xl font-semibold text-gray-900">
-              Log in to Exclusive
+              Log in to NeGear
             </h1>
             <p className="text-gray-600">Enter your details below</p>
           </div>

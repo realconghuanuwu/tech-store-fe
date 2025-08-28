@@ -17,6 +17,8 @@ import type { MenuProps } from "antd";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { products } from "@/pages/home/components/CategorySection";
+import { IMAGE } from "@/constants/image.constant";
+import { Image } from "antd";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -123,13 +125,13 @@ export default function Header() {
       <div className="bg-white border-b border-gray-200 py-4 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1
-              className="text-xl sm:text-2xl font-bold text-black cursor-pointer"
-              onClick={handleGoHome}
-            >
-              Exclusive
-            </h1>
+          <div>
+            <Image
+              src={IMAGE.LOGO}
+              alt="logo"
+              className="!w-full !h-14"
+              preview={false}
+            />
           </div>
 
           {/* Navigation - Desktop */}

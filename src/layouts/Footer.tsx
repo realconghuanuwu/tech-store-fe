@@ -1,4 +1,5 @@
-import { Button, Input, List } from "antd";
+import { IMAGE } from "@/constants/image.constant";
+import { Button, Image, Input, List } from "antd";
 import {
   ArrowRight,
   Facebook,
@@ -16,9 +17,13 @@ export default function Footer() {
     <footer className="bg-black text-white">
       <div className="container mx-auto px-6 py-12 max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Exclusive Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Exclusive</h3>
+            <Image
+              src={IMAGE.LOGO}
+              alt="logo"
+              className="!w-full !h-14"
+              preview={false}
+            />
             <div className="space-y-3">
               <h4 className="text-lg">Subscribe</h4>
               <p className="text-sm text-gray-300">
